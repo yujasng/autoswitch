@@ -16,7 +16,7 @@ char buffer[SIZE + 1];
 
 static const int servoPin = 27;
 Servo servo1;
-
+bool switchstate = false;
 #define SIZE 1
 
 void setup() {
@@ -51,18 +51,26 @@ void loop() {
         servo1.write(30);
   }
 
-  // if (radio.available()) {
-  //   radio.read(&buffer, SIZE);
-  //   Serial.print(F("Received: "));
-  //   Serial.println(buffer[0]);
-  //   Serial.println(buffer[1]);
-  //   if (c == 'T') {
-  //     servo1.write(90);
-  //   } else if (c == 'F') {
-  //       servo1.write(30);
-  //   }
+  if (radio.available()) {
+    radio.read(&buffer, SIZE);
+    Serial.print(F("Received: "));
+    Serial.println(buffer[0]);
+    //Serial.println(buffer[1]);
+
+//     if (buffer[0] == '1') {
+
+
+//       if (!switchstate) {
+//        servo1.write(90);
+//        switchstate = true;
+//     } else {
+//        servo1.write(30);
+//        switchstate = false;
+//     }
+
+//    }
   
-  // }
+  }
   
   Serial.println("hi");
   if (radio.available()) {      // is there a payload?
